@@ -1,0 +1,315 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+}
+
+/* ─── Header ─── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 750;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ─── Main ─── */
+.app-main {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ─── Error Banner ─── */
+.error-banner {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 14px 20px;
+  color: #ef4444;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ─── Favorites Section ─── */
+.favorites-section {
+  width: 100%;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.empty-state h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  color: #1a1a2e;
+  margin: 4px 0 0;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+/* ─── Meal Planner Section ─── */
+.planner-section {
+  width: 100%;
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+
+.planner-day-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.planner-day-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px;
+  margin: 0;
+}
+
+.planner-meals {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.planner-meal-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meal-type-label {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.planner-meal-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fdfaf6;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+}
+
+.planner-meal-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.planner-meal-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.planner-meal-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  line-height: 1.3;
+}
+
+.remove-planner-item {
+  background: none;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 4px;
+  font-weight: 750;
+  transition: opacity 0.1s ease;
+}
+
+.remove-planner-item:hover {
+  opacity: 0.7;
+}
+
+.planner-meal-empty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.5px dashed #dcd6cd;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: #ffffff;
+  height: 44px;
+}
+
+.planner-meal-empty.selecting {
+  border-style: solid;
+  border-color: var(--accent);
+  padding: 0;
+}
+
+.empty-slot-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.btn-add-slot {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.btn-add-slot:hover {
+  color: var(--accent-hover);
+}
+
+.planner-inline-select {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 0.82rem;
+  font-family: inherit;
+  background-color: transparent;
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+}
+
+/* ─── Footer ─── */
+.app-footer {
+  text-align: center;
+  padding: 24px;
+  border-top: 1.5px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  background: #ffffff;
+}
+
+.app-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    padding: 0 16px;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+  }
+  .app-main {
+    padding: 24px 16px 40px;
+    gap: 32px;
+  }
+}
