@@ -1,7 +1,15 @@
+import { useState } from 'react';
+import IngredientInput from './components/IngredientInput';
 import './styles/theme.css';
 import './App.css';
 
 export default function App() {
+  const [lastIngredients, setLastIngredients] = useState([]);
+
+  const handleSearch = (ingredients) => {
+    setLastIngredients(ingredients);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -12,10 +20,12 @@ export default function App() {
         </div>
       </header>
       <main className="app-main">
-        <div style={{ textAlign: 'center', padding: '40px' }}>
-          <h2>Welcome to Smart Recipe Finder</h2>
-          <p>Find recipes you can cook with ingredients in your fridge.</p>
-        </div>
+        <IngredientInput onSearch={handleSearch} loading={false} />
+        {lastIngredients.length > 0 && (
+          <div style={{ textAlign: 'center' }}>
+            <p>Searching recipes for: {lastIngredients.join(', ')}</p>
+          </div>
+        )}
       </main>
     </div>
   );
