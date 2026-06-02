@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { getYoutubeId } from '../api/meals';
+import YouTubeEmbed from './YouTubeEmbed';
 import './RecipeCard.css';
 
 export default function RecipeCard({ meal, style, isFavorite, onToggleFavorite }) {
   const [expanded, setExpanded] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoId = getYoutubeId(meal.strYoutube);
 
   return (
     <article
@@ -24,7 +28,6 @@ export default function RecipeCard({ meal, style, isFavorite, onToggleFavorite }
       </div>
       <div className="recipe-body">
         <h3 className="recipe-title">{meal.strMeal}</h3>
-        <span className="recipe-id">ID: {meal.idMeal}</span>
         {expanded && (
           <div className="recipe-details" onClick={e => e.stopPropagation()}>
             <div className="recipe-ingredients">
@@ -38,6 +41,21 @@ export default function RecipeCard({ meal, style, isFavorite, onToggleFavorite }
             <div className="recipe-instructions-wrap">
               <span className="instructions-label">🍳 Instructions:</span>
               <p className="recipe-description">{meal.strInstructions}</p>
+            </div>
+            {showVideo && videoId && (
+              <div className="recipe-video-container">
+                <YouTubeEmbed videoId={videoId} title={meal.strMeal} />
+              </div>
+            )}
+            <div className="recipe-actions">
+              <button className="btn btn-secondary" onClick={() => setExpanded(false)}>
+                Close
+              </button>
+              {videoId && (
+                <button className="btn btn-primary" onClick={() => setShowVideo(v => !v)}>
+                  {showVideo ? 'Hide Video' : 'Watch Video'}
+                </button>
+              )}
             </div>
           </div>
         )}
